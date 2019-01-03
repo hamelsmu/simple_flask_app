@@ -2,7 +2,6 @@
 
 {% block title %}
     Search Books 
-    <small>Performs Wildcard Search Automatically On Sub-strings</small>
 {% endblock %}
 {% block body %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-light">
@@ -32,6 +31,7 @@
     </nav>
     <br>
     <h4 class="text-center">Search Books</h4>
+    <small class="text-center">Performs Wildcard Search Automatically On Sub-strings</small>
     <form action="{{ url_for('search') }}" method="post">
         <div class="form-group">
                 <label for="author">Author's Name</label>
