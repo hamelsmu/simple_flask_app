@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block body %}
+    <!-- {% if logout %}
+    <div class="alert alert-primary" role="alert">You have been logged out.</div> 
+    {% endif %} -->
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Book Search</h1>
+        <p>Hamel's first flask app</p>
+        <a href="https://github.com/hamelsmu/simple_flask_app">See this on GitHub</a>
+    </div>
+    <form action="{{ url_for('index') }}" method="post">
+        <div class="form-row">
+            <div class="col">
+                <label for="email">Email address</label>
+                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="col" style="margin-left: 20px">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+            </div>
+        </div>
+        <button style="margin-top: 10px" type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <br><p>Don't have a login? <a href="{{ url_for('register') }}">Register as a new user.</a> </p>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Books
+{% endblock %}
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a style="color:grey">Logged in as 
+                    <span style="font-weight:bold">{{username}}</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('search') }}" style="color:blue">
+                    Back To Search
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}" style="color:blue">
+                    Logout
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <br>
+    <h4 class="text-center">Data For {{ username }} </h4>
+    {% if results %}
+        <br>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">email</th>
+                <th scope="col">query</th>
+                <th scope="col">isbn_list</th>
+                <th scope="col">position_list</th>
+                <th scope="col">num_results</th>
+                <th scope="col">top_position</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for result in results %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ result.email }}</td>
+                <td>{{ result.query }}</td>
+                <td>{{ result.isbn_list }}</td>
+                <td>{{ result.position_list }}</td>
+                <td>{{ result.num_results }}</td>
+                <td>{{ result.top_position }}</td>
+            </tr>
+            {% endfor %}  
+            </tbody>
+        </table> 
+    {% endif %}
+{% endblock %}
