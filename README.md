@@ -1,4 +1,5 @@
-[![Heroku](https://heroku-badge.herokuapp.com/?app=radiant-beach-43865)]
+![Heroku](https://heroku-badge.herokuapp.com/?app=radiant-beach-43865) [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 
 Hamel's first flask app: 
 
