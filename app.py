@@ -1,7 +1,7 @@
 import os
 from flask import (Flask, session, render_template, 
                    session, redirect, url_for, request,
-                   flash)
+                   flash, jsonify)
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -98,6 +98,13 @@ def logout():
    "If user logs out, clear the session completely."
    session = {}
    return redirect(url_for('index'))
+
+
+@app.route('/api/<string:username>')
+def api(username):
+   results = db.execute("SELECT * FROM query_logs WHERE email = :email",
+                         {'email': username}).fetchall()
+   return jsonify([dict(u) for u in results])
 
 
 @app.route('/search', methods=['GET', 'POST'])
