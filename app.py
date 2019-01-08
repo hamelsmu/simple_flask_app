@@ -111,10 +111,8 @@ def api(username):
 def search():
     "Routes for search page."
     # intialize state of the search page.
-    results = session.get('results')
     error = None
     alert = None
-    log_msg = session.get('query')
 
     # Get Data from database that match query
     if request.method == 'POST' and not error:
@@ -124,14 +122,14 @@ def search():
         if not error:   
             session['results'] = search_books(**request.form)
             session['query'] = log_search(**request.form)
-            print(log_msg)
+            print(session['query'])
 
-            if not results:
+            if not session['results']:
                 alert = "Your query did not return any results."
         
     return render_template("search.html", 
                            username=session['username'], 
-                           results=results,
+                           results=session['results'],
                            log_msg=session.get('query'),
                            error=error,
                            alert=alert)
