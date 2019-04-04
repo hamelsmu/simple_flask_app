@@ -113,6 +113,7 @@ def search():
     # intialize state of the search page.
     error = None
     alert = None
+    session['results'] = None
 
     # Get Data from database that match query
     if request.method == 'POST' and not error:
